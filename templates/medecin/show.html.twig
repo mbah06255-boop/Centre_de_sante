@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h2>{{ medecin.nom }}</h2>
+
+<ul class="list-group">
+    <li class="list-group-item">
+        <strong>Spécialité :</strong> {{ medecin.specialite }}
+    </li>
+    <li class="list-group-item">
+        <strong>Téléphone :</strong> {{ medecin.telephone }}
+    </li>
+    <li class="list-group-item">
+        <strong>Email :</strong> {{ medecin.email }}
+    </li>
+</ul>
+
+<form method="post" action="{{ path('app_medecin_delete', {id: medecin.id}) }}" class="mt-3">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ medecin.id) }}">
+    <button class="btn btn-danger">Supprimer</button>
+</form>
+
+<a href="{{ path('app_medecin_index') }}" class="btn btn-secondary mt-2">Retour</a>
+{% endblock %}

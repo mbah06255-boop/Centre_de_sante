@@ -1,0 +1,100 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau Médecin{% endblock %}
+
+{% block body %}
+<div class="container-fluid d-flex align-items-center justify-content-center" style="background: #1e3a5f; min-height: 100vh; padding: 40px 20px;">
+    <div class="col-md-8 col-lg-6 col-xl-5">
+        <h1 class="text-white mb-4 text-center">Créer un nouveau Médecin</h1>
+            
+            {{ form_start(form, {'attr': {'class': 'dark-form'}}) }}
+                
+               <div class="mb-4">
+                {{ form_label(form.nom, 'Nom', {'label_attr': {'class': 'form-label text-white'}}) }}
+                {{ form_widget(form.nom, {'attr': {'class': 'form-control form-control-lg', 'placeholder': 'Nom'}}) }}
+                {{ form_errors(form.nom) }}
+            </div>
+
+
+            <div class="mb-4">
+                {{ form_label(form.specialite, 'Specialite', {'label_attr': {'class': 'form-label text-white'}}) }}
+                {{ form_widget(form.specialite, {'attr': {'class': 'form-control form-control-lg', 'rows': '3', 'placeholder': 'specialite'}}) }}
+                {{ form_errors(form.specialite) }}
+            </div>
+
+            <div class="mb-4">
+                {{ form_label(form.telephone, 'Telephone', {'label_attr': {'class': 'form-label text-white'}}) }}
+                {{ form_widget(form.telephone, {'attr': {'class': 'form-control form-control-lg'}}) }}
+                {{ form_errors(form.telephone) }}
+            </div>
+
+            <div class="mb-4">
+                {{ form_label(form.email, 'Email', {'label_attr': {'class': 'form-label text-white'}}) }}
+                {{ form_widget(form.email, {'attr': {'class': 'form-control form-control-lg', 'placeholder': 'Entrez votre Email'}}) }}
+                {{ form_errors(form.email) }}
+            
+            {{ form_rest(form) }}
+
+            <div class="d-grid gap-2 d-md-flex justify-content-md-center mt-5">
+                <button type="submit" class="btn btn-success btn-lg px-5">
+                    Enregistrer
+                </button>
+                <a href="{{ path('app_medecin_index') }}" class="btn btn-secondary btn-lg px-5">
+                    Retour
+                </a>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>
+
+<style>
+    .dark-form .form-control,
+    .dark-form .form-select {
+        background: #f8f9fa;
+        border: none;
+        border-radius: 4px;
+        padding: 12px 16px;
+        font-size: 16px;
+        color: #495057;
+    }
+    
+    .dark-form .form-control:focus,
+    .dark-form .form-select:focus {
+        background: #ffffff;
+        border: none;
+        box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.3);
+    }
+    
+    .dark-form label {
+        color: white;
+        font-weight: 500;
+        margin-bottom: 8px;
+        font-size: 15px;
+    }
+    
+    .dark-form .form-group {
+        margin-bottom: 1.5rem;
+    }
+    
+    .btn-success {
+        background: #28a745;
+        border: none;
+        font-weight: 500;
+    }
+    
+    .btn-success:hover {
+        background: #218838;
+    }
+    
+    .btn-secondary {
+        background: #6c757d;
+        border: none;
+        font-weight: 500;
+    }
+    
+    .btn-secondary:hover {
+        background: #5a6268;
+    }
+</style>
+{% endblock %}

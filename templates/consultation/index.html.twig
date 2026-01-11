@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h1>Liste des consultations</h1>
+
+<a href="{{ path('app_consultation_new') }}" class="btn btn-primary mb-3">Nouvelle consultation</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Patient</th>
+            <th>Médecin</th>
+            <th>Motif</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for consultation in consultations %}
+        <tr>
+            <td>{{ consultation.date|date('d/m/Y H:i') }}</td>
+            <td>{{ consultation.patient.nom }} {{ consultation.patient.prenom }}</td>
+            <td>{{ consultation.medecin.nom }}</td>
+            <td>{{ consultation.motif }}</td>
+            <td>
+                <a href="{{ path('app_consultation_show', {id: consultation.id}) }}" class="btn btn-sm btn-info">Voir</a>
+                <a href="{{ path('app_consultation_edit', {id: consultation.id}) }}" class="btn btn-sm btn-warning">Modifier</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

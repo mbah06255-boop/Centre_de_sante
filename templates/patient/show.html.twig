@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h2>{{ patient.nom }} {{ patient.prenom }}</h2>
+<p>Téléphone : {{ patient.telephone }}</p>
+<p>Adresse : {{ patient.adresse }}</p>
+
+<form method="post" action="{{ path('app_patient_delete', {id: patient.id}) }}">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ patient.id) }}">
+    <button class="btn btn-danger">Supprimer</button>
+</form>
+{% endblock %}

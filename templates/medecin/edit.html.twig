@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h1>Modifier le médecin</h1>
+
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button class="btn btn-primary mt-3">Modifier</button>
+{{ form_end(form) }}
+
+<a href="{{ path('app_medecin_index') }}" class="btn btn-secondary mt-2">Retour</a>
+{% endblock %}

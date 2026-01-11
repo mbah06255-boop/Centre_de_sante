@@ -1,0 +1,111 @@
+{# templates/consultation/new.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle Consultation{% endblock %}
+
+{% block body %}
+<div class="container-fluid d-flex align-items-center justify-content-center" style="background: #1e3a5f; min-height: 100vh; padding: 40px 20px;">
+    <div class="col-md-8 col-lg-6 col-xl-5">
+            <h1 class="text-white mb-4 text-center">Nouvelle consultation</h1>
+            
+            {{ form_start(form, {'attr': {'class': 'dark-form'}}) }}
+            
+            <div class="mb-4">
+                {{ form_label(form.date, 'Date', {'label_attr': {'class': 'form-label text-white'}}) }}
+                {{ form_widget(form.date, {'attr': {'class': 'form-control form-control-lg', 'placeholder': 'jj/mm/aaaa --:--'}}) }}
+                {{ form_errors(form.date) }}
+            </div>
+
+            <div class="mb-4">
+                {{ form_label(form.motif, 'Motif', {'label_attr': {'class': 'form-label text-white'}}) }}
+                {{ form_widget(form.motif, {'attr': {'class': 'form-control form-control-lg', 'rows': '3', 'placeholder': 'Décrivez le motif de la consultation'}}) }}
+                {{ form_errors(form.motif) }}
+            </div>
+
+            <div class="mb-4">
+                {{ form_label(form.diagnostic, 'Diagnostic', {'label_attr': {'class': 'form-label text-white'}}) }}
+                {{ form_widget(form.diagnostic, {'attr': {'class': 'form-control form-control-lg', 'rows': '3', 'placeholder': 'Diagnostic médical'}}) }}
+                {{ form_errors(form.diagnostic) }}
+            </div>
+
+            <div class="mb-4">
+                {{ form_label(form.patient, 'Patient', {'label_attr': {'class': 'form-label text-white'}}) }}
+                {{ form_widget(form.patient, {'attr': {'class': 'form-select form-select-lg'}}) }}
+                {{ form_errors(form.patient) }}
+            </div>
+            
+            <div class="mb-4">
+                {{ form_label(form.medecin, 'Medecin', {'label_attr': {'class': 'form-label text-white'}}) }}
+                {{ form_widget(form.medecin, {'attr': {'class': 'form-select form-select-lg'}}) }}
+                {{ form_errors(form.medecin) }}
+            </div>
+
+            {{ form_rest(form) }}
+
+            <div class="d-grid gap-2 d-md-flex justify-content-md-center mt-5">
+                <button type="submit" class="btn btn-success btn-lg px-5">
+                    Enregistrer
+                </button>
+                <a href="{{ path('app_consultation_index') }}" class="btn btn-secondary btn-lg px-5">
+                    Retour
+                </a>
+            </div>
+
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>
+
+<style>
+    .dark-form .form-control,
+    .dark-form .form-select {
+        background: #f8f9fa;
+        border: none;
+        border-radius: 4px;
+        padding: 12px 16px;
+        font-size: 16px;
+        color: #495057;
+    }
+    
+    .dark-form .form-control:focus,
+    .dark-form .form-select:focus {
+        background: #ffffff;
+        border: none;
+        box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.3);
+    }
+    
+    .dark-form .form-label {
+        font-weight: 500;
+        margin-bottom: 8px;
+        font-size: 15px;
+    }
+    
+    .dark-form select {
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 16px center;
+        padding-right: 40px;
+    }
+    
+    .btn-success {
+        background: #28a745;
+        border: none;
+        font-weight: 500;
+    }
+    
+    .btn-success:hover {
+        background: #218838;
+    }
+    
+    .btn-secondary {
+        background: #6c757d;
+        border: none;
+        font-weight: 500;
+    }
+    
+    .btn-secondary:hover {
+        background: #5a6268;
+    }
+</style>
+{% endblock %}

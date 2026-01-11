@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil - Centre Médical{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+<h1>Centre Médical</h1>
+
+<p>Bienvenue dans le système de gestion du centre médical.</p>
+
+    <h2 class="mb-4">Tableau de bord</h2>
+
+    <!-- Statistiques -->
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card stat-card bg-primary text-white">
+                <div class="card-body">
+                    <h3>{{ patients }}</h3>
+                    <h5>Patients</h5>
+                    <p>Gérez les dossiers patients et leur historique médical</p>
+                    <a href="{{ path('app_patient_index') }}" class="btn btn-light btn-sm">
+                        Gérer →
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card stat-card bg-success text-white">
+                <div class="card-body">
+                    <h3>{{ medecins }}</h3>
+                    <h5>Médecins</h5>
+                    <p>Administrez l'équipe médicale et les spécialités</p>
+                    <a href="{{ path('app_medecin_index') }}" class="btn btn-light btn-sm">
+                        Gérer →
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Actions rapides -->
+    <h4 class="mt-5 mb-3">Actions rapides</h4>
+
+    <div class="row g-3">
+        <div class="col-md-6">
+            <a href="{{ path('app_patient_new') }}" class="btn btn-primary w-100 py-3">
+                ➕ Nouveau patient
+            </a>
+        </div>
+
+        <div class="col-md-6">
+            <a href="{{ path('app_consultation_new') }}" class="btn btn-warning w-100 py-3 text-white">
+                📅 Nouvelle consultation
+            </a>
+        </div>
+
+        <div class="col-md-6">
+            <a href="{{ path('app_medecin_new') }}" class="btn btn-success w-100 py-3">
+                ➕ Ajouter médecin
+            </a>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

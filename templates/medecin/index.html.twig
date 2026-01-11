@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h1>Liste des médecins</h1>
+
+<a href="{{ path('app_medecin_new') }}" class="btn btn-primary mb-3">Ajouter</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Spécialité</th>
+            <th>Téléphone</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for medecin in medecins %}
+        <tr>
+            <td>{{ medecin.nom }}</td>
+            <td>{{ medecin.specialite }}</td>
+            <td>{{ medecin.telephone }}</td>
+            <td>
+                <a href="{{ path('app_medecin_show', {id: medecin.id}) }}" class="btn btn-sm btn-info">Voir</a>
+                <a href="{{ path('app_medecin_edit', {id: medecin.id}) }}" class="btn btn-sm btn-warning">Modifier</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
