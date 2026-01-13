@@ -1,11 +1,28 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-<h2>{{ patient.nom }} {{ patient.prenom }}</h2>
-<p>Téléphone : {{ patient.telephone }}</p>
-<p>Adresse : {{ patient.adresse }}</p>
+<h2>Détail du Patient</h2>
 
+<ul class="list-group">
+    
+    <li class="list-group-item">
+        <strong>Nom :</strong> {{ patient.nom }}
+    </li>
+    <li class="list-group-item">
+        <strong>Prenom :</strong> {{ patient.prenom }}
+    </li>
+    <li class="list-group-item">
+        <strong>Date de Naissance :</strong> {{ patient.dateNaissance|date('d/m/Y H:i') }}
+    </li>
+    <li class="list-group-item">
+        <strong>Téléphone :</strong> {{ patient.telephone }}
+    </li>
+    <li class="list-group-item">
+        <strong>Adresse :</strong> {{ patient.adresse }}
+    </li>
+</ul>
 <form method="post" action="{{ path('app_patient_delete', {id: patient.id}) }}">
     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ patient.id) }}">
     <button class="btn btn-danger">Supprimer</button>
 </form>
+<a href="{{ path('app_patient_index') }}" class="btn btn-secondary mt-2">Retour</a>
 {% endblock %}
