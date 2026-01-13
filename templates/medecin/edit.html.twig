@@ -1,12 +1,48 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+<div class="container-fluid d-flex align-items-center justify-content-center" style="background: #1e3a5f; min-height: 100vh; padding: 40px 20px;">
+    <div class="col-md-8 col-lg-6 col-xl-5">
 <h1>Modifier le médecin</h1>
 
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn btn-primary mt-3">Modifier</button>
-{{ form_end(form) }}
+ {{ form_start(form, {'attr': {'class': 'dark-form'}}) }}
+                
+               <div class="mb-4">
+                {{ form_label(form.nom, 'Nom', {'label_attr': {'class': 'form-label text-white'}}) }}
+                {{ form_widget(form.nom, {'attr': {'class': 'form-control form-control-lg', 'placeholder': 'Nom'}}) }}
+                {{ form_errors(form.nom) }}
+            </div>
 
-<a href="{{ path('app_medecin_index') }}" class="btn btn-secondary mt-2">Retour</a>
+
+            <div class="mb-4">
+                {{ form_label(form.specialite, 'Specialite', {'label_attr': {'class': 'form-label text-white'}}) }}
+                {{ form_widget(form.specialite, {'attr': {'class': 'form-control form-control-lg', 'rows': '3', 'placeholder': 'specialite'}}) }}
+                {{ form_errors(form.specialite) }}
+            </div>
+
+            <div class="mb-4">
+                {{ form_label(form.telephone, 'Telephone', {'label_attr': {'class': 'form-label text-white'}}) }}
+                {{ form_widget(form.telephone, {'attr': {'class': 'form-control form-control-lg'}}) }}
+                {{ form_errors(form.telephone) }}
+            </div>
+
+            <div class="mb-4">
+                {{ form_label(form.email, 'Email', {'label_attr': {'class': 'form-label text-white'}}) }}
+                {{ form_widget(form.email, {'attr': {'class': 'form-control form-control-lg', 'placeholder': 'Entrez votre Email'}}) }}
+                {{ form_errors(form.email) }}
+            
+            {{ form_rest(form) }}
+
+            <div class="d-grid gap-2 d-md-flex justify-content-md-center mt-5">
+                <button type="submit" class="btn btn-success btn-lg px-5">
+                    Modifier
+                </button>
+                <a href="{{ path('app_medecin_index') }}" class="btn btn-secondary btn-lg px-5">
+                    Retour
+                </a>
+            </div>
+            {{ form_end(form) }}
+</div>
+</div>
+
 {% endblock %}

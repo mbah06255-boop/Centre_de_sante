@@ -5,16 +5,18 @@
 
 <a href="{{ path('app_patient_new') }}" class="btn btn-primary mb-3">Ajouter</a>
 
-<table class="table table-bordered">
+<table class="table table-striped">
     <tr>
         <th>Nom</th>
         <th>Prénom</th>
+        <th>Telephone</th>
         <th>Actions</th>
     </tr>
     {% for patient in patients %}
         <tr>
             <td>{{ patient.nom }}</td>
             <td>{{ patient.prenom }}</td>
+            <td>{{patient.telephone}}</td>
             <td>
                 <a href="{{ path('app_patient_show', {id: patient.id}) }}" class="btn btn-sm btn-info">Voir</a>
                 <a href="{{ path('app_patient_edit', {id: patient.id}) }}" class="btn btn-sm btn-warning">Modifier</a>

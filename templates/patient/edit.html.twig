@@ -1,8 +1,50 @@
 {% extends 'base.html.twig' %}
 {% block body %}
+<div class="container-fluid d-flex align-items-center justify-content-center" style="background: #1e3a5f; min-height: 100vh; padding: 40px 20px;">
+    <div class="col-md-8 col-lg-6 col-xl-5">
 <h1>Modifier patient</h1>
-{{ form_start(form) }}
-{{ form_widget(form) }}
-<button class="btn btn-primary">Modifier</button>
-{{ form_end(form) }}
+{{ form_start(form, {'attr': {'class': 'dark-form'}}) }}
+            
+            <div class="mb-4">
+                {{ form_label(form.nom, 'Nom', {'label_attr': {'class': 'form-label text-white'}}) }}
+                {{ form_widget(form.nom, {'attr': {'class': 'form-control form-control-lg', 'placeholder': 'Nom'}}) }}
+                {{ form_errors(form.nom) }}
+            </div>
+
+            <div class="mb-4">
+                {{ form_label(form.prenom, 'Prenom', {'label_attr': {'class': 'form-label text-white'}}) }}
+                {{ form_widget(form.prenom, {'attr': {'class': 'form-control form-control-lg', 'rows': '3', 'placeholder': 'Prenom'}}) }}
+                {{ form_errors(form.prenom) }}
+            </div>
+
+            <div class="mb-4">
+                {{ form_label(form.dateNaissance, 'Date Naissance', {'label_attr': {'class': 'form-label text-white'}}) }}
+                {{ form_widget(form.dateNaissance, {'attr': {'class': 'form-control form-control-lg', 'placeholder': 'jj/mm/aaaa --:--'}}) }}
+                {{ form_errors(form.dateNaissance) }}
+            <div class="mb-4">
+                {{ form_label(form.telephone, 'Telephone', {'label_attr': {'class': 'form-label text-white'}}) }}
+                {{ form_widget(form.telephone, {'attr': {'class': 'form-control form-control-lg'}}) }}
+                {{ form_errors(form.telephone) }}
+            </div>
+            
+            <div class="mb-4">
+                {{ form_label(form.adresse, 'Adresse', {'label_attr': {'class': 'form-label text-white'}}) }}
+                {{ form_widget(form.adresse, {'attr': {'class': 'form-control form-control-lg'}}) }}
+                {{ form_errors(form.adresse) }}
+            </div>
+
+            {{ form_rest(form) }}
+
+            <div class="d-grid gap-2 d-md-flex justify-content-md-center mt-5">
+                <button type="submit" class="btn btn-success btn-lg px-5">
+                    Modifier
+                </button>
+                <a href="{{ path('app_patient_index') }}" class="btn btn-secondary btn-lg px-5">
+                    Retour
+                </a>
+            </div>
+
+            {{ form_end(form) }}
+</div>
+</div>
 {% endblock %}
